@@ -22,19 +22,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-var infinityModule = angular.module('infinityScroller',[]);
+var infinityModule = angular.module('infScroll',[]);
 
 var service = {
-  name:'infinityScroller',
+  name:'infScroll',
   dependencies: [],
   definition: function () {
-    return Scroller;
+    return InfScroll;
   }
 };
 var directive = {
   name: 'infinity',
-  dependencies: ['$parse', 'infinityScroller', '$http'],
-  definition: function($parse, infinityScroller, $http) {
+  dependencies: ['$parse', 'infScroll', '$http'],
+  definition: function($parse, InfScroll, $http) {
     var result = {
       scope: {
         config: '=infinity',
@@ -46,7 +46,7 @@ var directive = {
         var id = 'scroller';
         scope.config.node = element[0];
         scope.config.ajax = $http;
-        scope[id] = new infinityScroller(scope.config);
+        scope[id] = new InfScroll(scope.config);
         scope[id].bind('onfire', function (data) {
           bindModel.$commitViewValue();
         });

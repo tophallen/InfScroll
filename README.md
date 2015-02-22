@@ -1,4 +1,4 @@
-# Infinity
+# InfScroll
 #### The Simple library agnostic infinite scroller
 
 Infinity is a simple scroller that works with any library and has no strict dependencies, it works out of the box with signalr, jQuery, and angular. It also has built in support for commonJS modules/AMD loaders. It works by calculating the bounding box of the scroller's innards vs the window height, adjusting based on the configuration's padding setting and fetching more data when the threshold is met.
@@ -7,7 +7,7 @@ Infinity is a simple scroller that works with any library and has no strict depe
 For the simple case you can simply instantiate with a config and then initialize:
 ```js
 var dataset = [];
-var sc = new Scroller({
+var sc = new InfScroll({
   node: 'infinite-holder',
   url: 'myurl'
 });
@@ -25,7 +25,7 @@ This will work, however if you don't provide some sort of data-binding template 
 
 You could also build a simple directive around it in angular and have the innards be an ng-repeat:
 ```js
-myModule.directive('infinity', function($parse, infinityScroller, $http) {
+myModule.directive('infinity', function($parse, InfScroll, $http) {
     var result = {
       scope: {
         config: '=infinity',
@@ -36,7 +36,7 @@ myModule.directive('infinity', function($parse, infinityScroller, $http) {
       link: function(scope, element, attr, bindModel) {
         scope.config.node = element[0];
         scope.config.ajax = $http;
-        scope.scroller = new infinityScroller(scope.config);
+        scope.scroller = new InfScroll(scope.config);
         scope.scroller.bind('onfire', function (data) {
           bindModel.$commitViewValue();
         });      

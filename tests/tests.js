@@ -1,4 +1,4 @@
-describe("The Scoller object", function() {
+describe("The InfScroll object", function() {
   
   var config = {
       mode: 'ajax',
@@ -16,12 +16,12 @@ describe("The Scoller object", function() {
   
   it("should have the following as a prototype", function() {
 
-    var scroller = window.Scroller;
+    var scroller = window.InfScroll;
     expect(scroller.prototype).toEqual({});
   });
 
   it("should have the following instance members with default values", function() {
-    var scroll = new window.Scroller();
+    var scroll = new window.InfScroll();
     expect(scroll.disable).toBe(false);
     expect(scroll.state.$indexName).toBe('index');
     expect(scroll.state.$lengthName).toBe('length');
@@ -36,7 +36,7 @@ describe("The Scoller object", function() {
   });
 
   it('should have changed state from default on config', function() {
-    var scroll = new window.Scroller(config);
+    var scroll = new window.InfScroll(config);
     //the state property should actually be unchanged until
     //initialize is called, the config however should 
     //reflect the combined changes from defaults overwritten by
@@ -54,7 +54,7 @@ describe("The Scoller object", function() {
   });
   
   it('should make many changes to state on initalize', function() {
-    var scroll = new window.Scroller(config);
+    var scroll = new window.InfScroll(config);
     var myData = [];
     var initialized = scroll.initialize(myData);
     expect(initialized).toBe(undefined);
@@ -62,7 +62,7 @@ describe("The Scoller object", function() {
   });
   
   it('should parse params into urls when the type is params', function () {
-    var scroll = new window.Scroller(config);
+    var scroll = new window.InfScroll(config);
     var myData = [];
     scroll.initialize(myData);
     
@@ -75,7 +75,7 @@ describe("The Scoller object", function() {
   });
   
   it('should log messages with and ISO timestamp', function () {
-    var scroll = new window.Scroller(config);
+    var scroll = new window.InfScroll(config);
     var myData = [];
     scroll.initialize(myData);
     
@@ -88,7 +88,7 @@ describe("The Scoller object", function() {
   });
   
   it('should build an ajax config to match $.ajax', function () {
-    var scroll = new window.Scroller(config);
+    var scroll = new window.InfScroll(config);
     var myData = [];
     scroll.initialize(myData);
     

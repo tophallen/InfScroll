@@ -23,13 +23,7 @@ THE SOFTWARE.
 */
 
 (function(global, angular, $, factory) {
-  //source jQuery (https://github.com/jquery/jquery/tree/master/src) -  intro.js
   if (typeof module === "object" && typeof module.exports === "object") {
-    // For CommonJS and CommonJS-like environments where a proper `window`
-    // is present, execute the factory and get Scroller.
-    // For environments that do not have a `window` with a `document`
-    // (such as Node.js), expose a factory as module.exports.
-    // This accentuates the need for the creation of a real `window`.
     module.exports = global.document ? factory(global, angular, $, true) :
       function(w) {
         return factory(w, angular, $);
@@ -37,13 +31,12 @@ THE SOFTWARE.
   } else {
     factory(global, angular, $);
   }
-  //end borrowed code
 
   // Pass this if window is not defined yet
 })(typeof window !== undefined ? window : this, typeof angular !== 'undefined' ? angular : undefined, typeof $ !== 'undefined' ? $ : undefined, function(global, angular, $, noGlobal, undefined) {
   'use strict';
 
-  var Scroller = function(configuration) {
+  var InfScroll = function(configuration) {
     var self = this,
       nop = function() {},
       DEFAULT_CONFIG = {
@@ -721,35 +714,33 @@ THE SOFTWARE.
     _activeConfig = _helpers.extend(true, DEFAULT_CONFIG, configuration);
 
   }; //end of scroller
-  Scroller.prototype = {};
-  Scroller._windowOnScrollCallbacks = [];
-  Scroller._windowOnResizeCallbacks = [];
+  InfScroll.prototype = {};
+  InfScroll._windowOnScrollCallbacks = [];
+  InfScroll._windowOnResizeCallbacks = [];
 
-  //begin region borrowed code - src: jQuery
   var
-  // Map over Scroller in case of overwrite
-  _Scroller = window.Scroller;
-  Scroller.noConflict = function(deep) {
+  // Map over InfScroll in case of overwrite
+  _InfScroll = window.InfScroll;
+  InfScroll.noConflict = function(deep) {
 
-    if (deep && window.Scroller === Scroller) {
-      window.Scroller = _Scroller;
+    if (deep && window.InfScroll === InfScroll) {
+      window.InfScroll = _Scroller;
     }
 
-    return Scroller;
+    return InfScroll;
   };
 
   if (typeof define === "function" && define.amd) {
-    define("infinity", [], function() {
-      return Scroller;
+    define("infScroll", [], function() {
+      return InfScroll;
     });
   }
 
-  // Expose Scroller and $ identifiers, even in AMD
+  // Expose InfScroll identifier, even in AMD
   // and CommonJS for browser emulators
   if (!noGlobal) {
-    window.Scroller = Scroller;
+    window.InfScroll = InfScroll;
   }
 
-  return Scroller;
-  //end region borrowed code
+  return InfScroll;
 });

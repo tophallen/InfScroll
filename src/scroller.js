@@ -469,6 +469,8 @@ THE SOFTWARE.
           }
           _state.$locked = false;
           _logger('Successfully completed data fetch...');
+          _logger('checking if more data should be aquired...');
+          _events._onScroll(_activeConfig);
         } catch (e) {
           _events.onError(e);
         }

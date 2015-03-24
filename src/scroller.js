@@ -167,6 +167,9 @@ THE SOFTWARE.
     //now we build out some functionality
     var _helpers = {
       extend: function( /*deep, target, arguments*/ ) {
+        //This extend function honors get/set and other object property attributes, 
+        //allowing for ES5/6 objects to work normally, and maintain references to 
+        //outside objects if needed.
         var deep = arguments.length > 0 ? arguments[0] : false;
         var target = arguments.length > 1 ? arguments[1] : {};
         //is deep a bool? if so it is calling for deep copy
@@ -722,7 +725,7 @@ THE SOFTWARE.
   InfScroll.noConflict = function(deep) {
 
     if (deep && window.InfScroll === InfScroll) {
-      window.InfScroll = _Scroller;
+      window.InfScroll = _InfScroll;
     }
 
     return InfScroll;

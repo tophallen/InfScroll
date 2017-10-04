@@ -3,7 +3,7 @@
 
 Infinity is a simple scroller that works with any library and has no strict dependencies, it works out of the box with signalr, jQuery, and angular. It also has built in support for commonJS modules/AMD loaders. It works by calculating the bounding box of the scroller's innards vs the window height, adjusting based on the configuration's padding setting and fetching more data when the threshold is met.
 
-####How To Use:
+#### How To Use:
 For the simple case you can simply instantiate with a config and then initialize:
 ```js
 var dataset = [];
@@ -71,11 +71,11 @@ All you would need to have as HTML
 
 That seems simple enough, so let's get into the workings and events and how to manage the life-cycle of the scroller.
 
-###The Configuration
+### The Configuration
 
 The configuration is what will get passed into the constructor, anything that is not there when build will not be used.
 
-####Properties:
+#### Properties:
 
  - `len`: this is the length property, it should be a positive number, as it is the number of items that get called next, we will cover your options around this later. `default: 5`
  - `mode`: specified the operation mode to run in, as it supports `custom`, `ajax`(XMLHttpRequest), and `custom`. you must provide a custom function that resolves or rejects a $q style promise when in custom, and for signalR, signalr must be bound to the global scope under `$.connection`. `default: 'ajax'`
@@ -98,7 +98,7 @@ The configuration is what will get passed into the constructor, anything that is
  
 These members are exposed to you to set on the config.
 
-####The Instance
+#### The Instance
 You have some members exposed to you once you have the instance as well.
 
  - `disable`: allows you to get or set whether the scroller is in lockdown, when disable is `true`, no more API calls will be made, and it stops calculating if it needs to get more, set to false to re-enable.
@@ -109,7 +109,7 @@ You have some members exposed to you once you have the instance as well.
  - `bind(name, callback)`: binds an event to the given name (_see the events section for more details_)
  - `unbind(name, callback)`: unbinds an event from the given event name (_see the events section for more details_)
 
-###Events
+### Events
 There are currently four exposed event handles in the Scroller, `onFire`, `beforeFire`,`afterFire`, and `onError`
 
  - `beforeFire(config, event)` is called before the API call is made and gives you a chance to look at the configuration before the call is made, it passes the config to you, and some event data, which allows you to cancel the API call by calling `preventDefault()`.
